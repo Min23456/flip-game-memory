@@ -1,0 +1,29 @@
+<div class="game-header">
+    <h1>🧠 Memory Game 🧠</h1>
+    <div class="game-stats">
+        <div class="stat-item">
+            <span>Moves: </span>
+            <span id="moves">0</span>
+        </div>
+        <div class="stat-item">
+            <span>Time: </span>
+            <span id="timer">00:00</span>
+        </div>
+        <div class="stat-item">
+            <span>Pairs: </span>
+            <span id="pairs">0/8</span>
+        </div>
+    </div>
+    <div class="game-board" id="gameBoard">
+    </div>
+    <div class="controls">
+        <button class="btn btn-reset" onclick="resetGame()">🔁 New Game 🔁</button>
+    </div>
+    <div class="overlay" id="overlay">
+    </div>
+    <div class="win-message" id="winMessage">
+        <h2>🎉Congratulations!👏</h2>
+        <p id="winText">You win the game!</p>
+        <button class="btn btn-reset" onclick="resetGame()">Play again</button>
+    </div>
+</div>
