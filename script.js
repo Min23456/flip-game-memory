@@ -8,6 +8,7 @@ let startTime;
 let timerInterval;
 const cardSymbols = ['🎮', '🎯', '🎨', '🎪', '🎭', '🎸', '🎹', '🎺'];
 
+
 function initGame() {
     const gameBoard = document.getElementById('gameBoard');
     gameBoard.innerHTML = '';
@@ -18,11 +19,16 @@ function initGame() {
         gameBoard.appendChild(card);
     });
     resetGameState();
-    
+   
+
+
+
 
 
 
 }
+
+
 
 
 function createCard(symbol, index) {
@@ -34,22 +40,27 @@ function createCard(symbol, index) {
         <div class="card-inner">
             <div class="card-front">?</div>
             <div class="card-back">${symbol}</div>
-        
+       
         </div>
     `;
     card.addEventListener('click', flipCard);
     return card;
 
 
+
+
 }
+
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; 1--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[1], array[j]] = [array[j], array[i]];
 
+
     }
 }
+
 
 function flipCard() {
     if (lockBoard) return;
@@ -58,21 +69,25 @@ function flipCard() {
     if (!gameStarted) {
         startGame();
 
+
     }
     this.classList.add('flipped');
     if (!hasFlippedCard) {
         hasFlippedCard = true;
         firstCard = this;
         return;
-        
-        
+       
+       
     }
     secondCard = this;
     moves++;
     updateMoves();
     checkForMatch();
 
+
 }
+
+
 
 
 function checkForMatch() {
@@ -82,7 +97,8 @@ function checkForMatch() {
         updatePairs();
         if (matches === 8) {
             setTimeout(showWinMessage, 500);
-        
+       
+
 
         }
     } else {
@@ -91,13 +107,97 @@ function checkForMatch() {
 }
 
 
+
+
 function disableCards() {
     firstCard.classList.add('matched');
     secondCard.classList.add('matched');
-    firstCard.removeEventListener('click', flipCard); 
-    secondCard.removeEventListener('click', flipCard); 
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
     resetBoard();
 }
+
+function unflipCards() {
+    lockBoard = true;
+    setTimeout(() => {
+        firstCard.classList.remove('flipped');
+        secondCard.classList.remove('flipped');
+        resetBoard();
+    }, 1000);
+
+}
+
+function resetBoard() {
+    [hasFlippedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
+
+}
+
+
+
+function startGame() {
+    gameStarted = true;
+    startTime = Date.now();
+    timerInterval = setInterval(updateTimer, 1000);
+
+}
+
+
+function updateTimer() {
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const minutes = Math.floor(elapsed / 60);
+    const seconds = elapsed % 60;
+    document.getElementById('timer').textContent = 
+        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+
+
+function updateMoves() {
+    document.getElementById('moves').textContent = moves;
+
+}
+
+function updatePairs(){
+    document.getElementById('pairs').textContent = `${matches}/8`;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
