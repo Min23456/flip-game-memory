@@ -101,7 +101,7 @@ body {
 .card-back {
     background: linear-gradient(45deg, #48dbfb, #0abde3);
     color: white;
-    transform: rotateY('180deg');
+    transform: rotateY(180deg);
     text-shadow: 2px 2px 4px rgba(0, 0, 0,0.3);
 
 }
@@ -144,7 +144,7 @@ body {
 }
 
 
-.btn-rest:hover {
+.btn-reset:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0,0.3);
 
@@ -209,7 +209,8 @@ body {
 
 @media (max-width:768px) {
     .game-board {
-        grid-template-columns: repeat (3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
     }
     .memory-card {
         width: 90px;
