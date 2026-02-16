@@ -14,8 +14,8 @@ function initGame() {
     gameBoard.innerHTML = '';
     const cards =[...cardSymbols, ...cardSymbols];
     shuffle(cards);
-    cards.forEach((Symbol, index) => {
-        const card = createCard(Symbol, index);
+    cards.forEach((symbol, index) => {
+        const card = createCard(symbol, index);
         gameBoard.appendChild(card);
     });
     resetGameState();
@@ -53,9 +53,9 @@ function createCard(symbol, index) {
 
 
 function shuffle(array) {
-    for (let i = array.length - 1; i > 0; 1--) {
+    for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[1], array[j]] = [array[j], array[i]];
+        [array[i], array[j]] = [array[j], array[i]];
 
 
     }
@@ -92,7 +92,7 @@ function flipCard() {
 
 function checkForMatch() {
     if (firstCard.dataset.symbol === secondCard.dataset.symbol) {
-        disableCard();
+        disableCards();
         matches++;
         updatePairs();
         if (matches === 8) {
@@ -102,7 +102,7 @@ function checkForMatch() {
 
         }
     } else {
-        unflippedCards();
+        unflipCards();
     }
 }
 
