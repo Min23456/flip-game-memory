@@ -164,19 +164,53 @@ function updatePairs(){
 }
 
 
+function resetGameState() {
+    hasFlippedCard = false;
+    lockBoard = false;
+    firstCard = null;
+    secondCard = null;
+    moves = 0;
+    matches =0;
+    gameStarted = false;
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+    document.getElementById('moves').textContent = '0';
+    document.getElementById('timer').textContent = '00:00';
+    document.getElementById('pairs').textContent = '0/8';
+    hideWinMessage();
+
+}
+
+
+
+function showWinMessage() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+    }
+    const timeText = document.getElementById('timer').textContent;
+    document.getElementById('winText').textContent = `You completed the game in ${moves} moves and ${timeText}`;
+    document.getElementById('overlay').classList.add('show');
+    document.getElementById('winMessage').classList.add('show');
+
+
+}
+
+function hideWinMessage() {
+    document.getElementById('overlay').classList.remove('show');
+    document.getElementById('winMessage').classList.remove('show');
+
+}
 
 
 
 
+function resetGame() {
+    hideWinMessage();
+    initGame();
+}
 
-
-
-
-
-
-
-
-
+window.addEventListener('load', initGame);
 
 
 
