@@ -13,7 +13,7 @@ Flip Game Memory is a simple and engaging card-matching game that challenges you
 
 ## 📸 Preview
 
-![Game Preview](./Images/Memory.png)
+![Game Preview](Images/Memory.PNG)
 
 ---
 
