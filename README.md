@@ -54,11 +54,7 @@ Flip Game Memory is a simple and engaging card-matching game that challenges you
 
 ### 2️⃣ Play the Game!
 
-No installations or dependencies required.
-
----
-
-## 📁 Project Structure
+No installations or dependencies required. (And it's FREE!)
 
 ---
 
